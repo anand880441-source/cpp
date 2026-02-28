@@ -16,7 +16,7 @@ public:
 
 int main() {
     Car myCar;
-    cout << "Brand: " << myCar.brand << "\n";
+    cout << "Brand : " << myCar.brand << "\n";
     cout << "Model: " << myCar.model << "\n";
     myCar.honk();
     return 0;

@@ -76,6 +76,6 @@ int main(){
     
     // p1.add(10, 20);
     // int b = p1.add(12.23, 78.3);
-    // char c = p1.add("Samir" , 68);
+    // char c = p1.add("SPINO" , 68);
     return 0;
 }

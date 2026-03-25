@@ -9,6 +9,8 @@ public:
     {
         cout << "Engine" << endl;
     }
+
+    virtual ~Cars() {cout << "Cars is destroyed" << endl;}
 };
 
 class Tata : public Cars
@@ -22,14 +24,18 @@ public:
 
 int main()
 {
-    Cars *c1 = new Tata;
-    c1->engine();
+    // Cars *c1 = new Tata;
+    // c1->engine();
 
-    delete c1;
+    // delete c1;
+    // return 0;
+
+    Cars* c1;
+    Tata c2;
+    c1 = &c2;
+    c1->engine();
     return 0;
 }
-
-
 
 // #include <iostream>
 

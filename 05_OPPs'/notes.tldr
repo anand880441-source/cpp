@@ -13,15 +13,16 @@
 			"com.tldraw.instance_presence": 6,
 			"com.tldraw.pointer": 1,
 			"com.tldraw.shape": 4,
-			"com.tldraw.asset.bookmark": 2,
-			"com.tldraw.asset.image": 5,
+			"com.tldraw.user": 1,
+			"com.tldraw.asset.image": 6,
 			"com.tldraw.asset.video": 5,
+			"com.tldraw.asset.bookmark": 2,
 			"com.tldraw.shape.group": 0,
 			"com.tldraw.shape.text": 4,
 			"com.tldraw.shape.bookmark": 2,
 			"com.tldraw.shape.draw": 4,
 			"com.tldraw.shape.geo": 11,
-			"com.tldraw.shape.note": 10,
+			"com.tldraw.shape.note": 12,
 			"com.tldraw.shape.line": 5,
 			"com.tldraw.shape.frame": 1,
 			"com.tldraw.shape.arrow": 8,
@@ -129,9 +130,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 12136.427546632573,
-			"y": -3301.943392846894,
-			"z": 0.05,
+			"x": 12141.21486022613,
+			"y": 2335.004466517062,
+			"z": 0.052000561795242525,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -223,7 +224,9 @@
 		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [],
+			"selectedShapeIds": [
+				"shape:GIxNkt3tx7Gm46arKk214"
+			],
 			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
@@ -502,7 +505,7 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1247.2000732421875,
+				"w": 1297.5999755859375,
 				"h": 749.6000366210938
 			},
 			"insets": [
@@ -520,7 +523,7 @@
 			"isFocused": true,
 			"devicePixelRatio": 1.25,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
+			"isHoveringCanvas": null,
 			"openMenus": [],
 			"isChangingStyle": false,
 			"isReadonly": false,
@@ -582,6 +585,14 @@
 				"title": "OOPs - Handwritten Notes | Harshal Khare"
 			},
 			"meta": {}
+		},
+		{
+			"name": "",
+			"color": "#11B3A3",
+			"imageUrl": "",
+			"meta": {},
+			"id": "user:VTCSotI086_4mS8v_sjF-",
+			"typeName": "user"
 		}
 	]
 }

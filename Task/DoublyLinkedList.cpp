@@ -59,35 +59,44 @@ public:
     }
     
 
-    void inserInBetween(int data, int target)
-    {
-        if (head == nullptr)
-        {
+    void inserInBetween(int data, int target){
+        //case 1
+        if(head == nullptr){
+            cout << "No Node exist!";
             return;
         }
-        Node *temp = head;
-        while (temp != nullptr && temp->data != target)
-        {
-            temp = temp->next;
+        //case 2
+        if(head->next == nullptr){
+            if(head->data != target){
+                cout << "No target found!";
+                return;
+            }
+            Node* temp = new Node(data);
+            temp->prev = head;
+            head->next = temp;
+            tail = temp;
         }
-        if (temp == nullptr)
-        {
-            cout << "\nTarget " << target << " not found!" << endl;
-            return;
+        //case 3
+        Node* temp1 = head;
+        while(temp1 != nullptr && temp1->data != target){
+            temp1 = temp1->next;
         }
-        Node *newNode = new Node(data);
-        newNode->next = temp->next;
-        newNode->prev = temp;
 
-        if (temp->next != nullptr)
-        {
-            temp->next->prev = newNode;
+        if(temp1 == nullptr){
+            cout << "No target found!" << endl;
+            return;
         }
-        else
-        {
-            tail = newNode;
+        Node* temp = new Node(data);
+        temp->next = temp1->next;
+        temp->prev = temp1;
+        temp1->next = temp;
+
+        if(temp->next != nullptr){
+            temp->next->prev = temp;
         }
-        temp->next = newNode;
+        if(temp->next == nullptr){
+            tail = temp;
+        }
     }
 
     void deleteAtFirst(){
@@ -178,7 +187,7 @@ int main()
     list.displayForward();
 
     cout << "Insert In between: ";
-    list.inserInBetween(55, 10);
+    list.inserInBetween(55, 20);
     list.displayForward();
 
     cout << "After deleting first node: ";

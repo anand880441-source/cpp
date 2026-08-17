@@ -44,10 +44,12 @@ public:
         head = temp;
     }
 
-    void insertAtLast(int data){
-        Node* temp = new Node(data);
-        
-        if(head == nullptr){
+    void insertAtLast(int data)
+    {
+        Node *temp = new Node(data);
+
+        if (head == nullptr)
+        {
             head = temp;
             tail = temp;
             return;
@@ -57,89 +59,132 @@ public:
         tail->next = temp;
         tail = temp;
     }
-    
 
-    void inserInBetween(int data, int target){
-        //case 1
-        if(head == nullptr){
+    void inserInBetween(int data, int target)
+    {
+        // case 1
+        if (head == nullptr)
+        {
             cout << "No Node exist!";
             return;
         }
-        //case 2
-        if(head->next == nullptr){
-            if(head->data != target){
+        // case 2
+        if (head->next == nullptr)
+        {
+            if (head->data != target)
+            {
                 cout << "No target found!";
                 return;
             }
-            Node* temp = new Node(data);
+            Node *temp = new Node(data);
             temp->prev = head;
             head->next = temp;
             tail = temp;
         }
-        //case 3
-        Node* temp1 = head;
-        while(temp1 != nullptr && temp1->data != target){
+        // case 3
+        Node *temp1 = head;
+        while (temp1 != nullptr && temp1->data != target)
+        {
             temp1 = temp1->next;
         }
 
-        if(temp1 == nullptr){
+        if (temp1 == nullptr)
+        {
             cout << "No target found!" << endl;
             return;
         }
-        Node* temp = new Node(data);
+        Node *temp = new Node(data);
         temp->next = temp1->next;
         temp->prev = temp1;
         temp1->next = temp;
 
-        if(temp->next != nullptr){
+        if (temp->next != nullptr)
+        {
             temp->next->prev = temp;
         }
-        if(temp->next == nullptr){
+        if (temp->next == nullptr)
+        {
             tail = temp;
         }
     }
 
-    void deleteAtFirst(){
-        Node* temp = head;
-
-        if (head == nullptr){
-            cout << "Nothing to delete!";
-            return; 
+    void deleteAtFirst()
+    {
+        if (head == nullptr)
+        {
+            cout << "Nothing to delete";
+            return;
         }
-
-        head = head->next;
-        head->prev = nullptr;
-        delete temp; 
+        else if (head == tail)
+        {
+            delete head;
+            head = nullptr;
+            tail = nullptr;
+        }
+        else
+        {
+            head = head->next;
+            delete head->prev;
+            head->prev = nullptr;
+        }
     }
 
-    void deleteAtLast(){
-        Node* temp = tail;
-
-        if (head == nullptr){
-            cout << "Nothing to delete!";
-            return; 
+    void deleteAtLast()
+    {
+        if (head == nullptr)
+        {
+            cout << "Nothing to delete";
+            return;
         }
-
-        tail = tail->prev;
-        tail->next = nullptr;
-        delete temp; 
+        else if (head == tail)
+        {
+            delete tail;
+            head = nullptr;
+            tail = nullptr;
+        }
+        else
+        {
+            tail = tail->prev;
+            delete tail->next;
+            tail->next = nullptr;
+        }
     }
 
-    void deleteInBetween(int target){
-        Node* temp = head;
-
-        if (head == nullptr){
+    void deleteInBetween(int target)
+    {
+        if (head == nullptr)
+        {
             cout << "Nothing to delete!";
-            return; 
+            return;
         }
 
-        while(temp!= nullptr && temp->data != target){
+        Node *temp = head;
+        while (temp != nullptr && temp->data != target)
+        {
             temp = temp->next;
         }
 
-        temp->prev->next = temp->next; 
-        temp->next->prev = temp->prev; 
-        delete temp; 
+        if (temp == nullptr)
+        {
+            cout << "No target found!";
+            return;
+        }
+
+        if (temp == head)
+        {
+            deleteAtFirst();
+            return;
+        }
+
+        if (temp == tail)
+        {
+            deleteAtLast();
+            return;
+        }
+
+        temp->prev->next = temp->next;
+        temp->next->prev = temp->prev;
+        delete temp;
     }
 
     void displayForward()
@@ -152,7 +197,6 @@ public:
         }
         cout << "NULL" << endl;
     }
-    
 
     void displayBackward()
     {

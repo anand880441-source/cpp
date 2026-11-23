@@ -180,6 +180,8 @@
 
 // Struct
 
+
+
 #include <iostream>
 using namespace std;
 
@@ -214,7 +216,6 @@ void insertAtLast(Node *&head, int data)
     if (head == nullptr)
     {
         head = newNode;
-        newNode->next = nullptr;
         return;
     }
 
@@ -227,33 +228,59 @@ void insertAtLast(Node *&head, int data)
     temp->next = newNode;
 }
 
+void insertInBetween(Node* &head, int data, int target){
+    Node* temp = head;
+
+    while(temp != nullptr && temp->val != target){
+        temp = temp -> next;
+    }
+
+    if(temp == nullptr){
+        cout << "Target Not found!" << endl;
+        return;
+    }
+
+    Node* newNode = new Node();
+    newNode -> val = data;
+    newNode -> next = temp -> next;
+    temp -> next = newNode;
+}
+
 void deleteAtFirst(Node *&head)
 {
-    Node *temp = head;
     if (head == nullptr)
     {
         cout << "Nothing to delete!!" << endl;
+        return; 
     }
 
+    Node *temp = head;
     head = head->next;
     delete temp;
 }
 
 void deleteAtLast(Node *&head)
 {
-    Node *temp = head;
     if (head == nullptr)
     {
         cout << "Nothing to delete!" << endl;
+        return;
     }
 
+    if (head->next == nullptr)
+    {
+        delete head;
+        head = nullptr;
+        return;
+    }
+
+    Node *temp = head;
     while (temp->next->next != nullptr)
     {
         temp = temp->next;
     }
 
     Node *temp1 = temp->next;
-
     temp->next = nullptr;
     delete temp1;
 }
@@ -287,6 +314,10 @@ int main()
     insertAtLast(n1, 40);
     display(n1);
 
+    cout <<"\nInsert In Between: ";
+    insertInBetween(n1, 41, 0);
+    display(n1);
+
     cout << "\nDelete At First: ";
     deleteAtFirst(n1);
     display(n1);
@@ -294,6 +325,10 @@ int main()
     cout << "\nDelete At Last: ";
     deleteAtLast(n1);
     display(n1);
+
+    while(n1 != nullptr) {
+        deleteAtFirst(n1);
+    }
 
     return 0;
 }
